@@ -2,6 +2,7 @@ package d.shokin.demo.controller;
 
 import d.shokin.demo.entity.Coffee;
 import d.shokin.demo.repository.CoffeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,11 +13,8 @@ import java.util.Optional;
 @RequestMapping("/coffees")
 public class CoffeeController {
 
-    private final CoffeeRepository coffeeRepository;
-
-    public CoffeeController(CoffeeRepository coffeeRepository) {
-        this.coffeeRepository = coffeeRepository;
-    }
+    @Autowired
+    private CoffeeRepository coffeeRepository;
 
     @GetMapping()
     public Iterable<Coffee> getCoffees() {
